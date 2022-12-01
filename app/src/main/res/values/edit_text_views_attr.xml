@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="nextFocus" format="reference"/>
+
+    <declare-styleable name="TitleEditTextView">
+        <attr name="titleEditTitleText" format="string" />
+        <attr name="titleEditHintsText" format="string" />
+        <attr name="titleEditInputType" format="enum">
+            <enum name="number" value="0" />
+            <enum name="password" value="1" />
+            <enum name="normal" value="2" />
+            <enum name="password_no_error_check" value="3" />
+            <enum name="email" value="4" />
+            <enum name="dropdown" value="5" />
+            <enum name="phone_no_error_check" value="6" />
+        </attr>
+        <attr name="titleEditMaxLength" format="integer" />
+        <attr name="nextFocus" />
+        <attr name="titleEditDelaySec" format="integer" />
+    </declare-styleable>
+</resources>

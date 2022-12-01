@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TransparentBottomSheetStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/SheetStyle</item>
+    </style>
+    <style name="SheetStyle" parent="android:Widget">
+        <item name="android:background">@drawable/round_corner_background_bottom_up_sheet</item>
+        <item name="behavior_hideable">true</item>
+        <item name="behavior_skipCollapsed">false</item>
+        <item name="android:windowExitAnimation">@anim/out_to_top</item>
+    </style>
+    
+    <style name="onofftext" parent="Theme.AppCompat.Light">
+        <item name="android:textSize">12dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+</resources>

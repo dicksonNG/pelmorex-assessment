@@ -8,6 +8,5 @@ import dagger.hilt.android.HiltAndroidApp
 class PelmorexApplication : Application() {
     override fun onCreate() {
         super.onCreate()
-        Log.e("DicksonDebug","DicksonDe bugeck st!")
     }
 }

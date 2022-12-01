@@ -86,16 +86,8 @@ open class ContactUsFragment : BaseFragment() {
         })
     }
 
-    fun clearText() {
-        binding.tvEmail.inputText.text.clear()
-        binding.tvName.inputText.text.clear()
-        binding.tvPhoneNumber.inputText.text.clear()
-    }
-
     override fun onDestroyView() {
         super.onDestroyView()
-        clearText()
-        Log.e("DicksonDebug","DicksonDEbug check!")
         _binding = null
     }
 }

@@ -44,7 +44,6 @@ class GalleryViewModel @Inject constructor() : BaseViewModel() {
     val text: LiveData<String> = _text
 
     fun updateGalleryPosition(index: Int) {
-        Log.e("DicksonDebug","DicksonDebug check point2: ${index}")
         _galleryPos.postValue(index)
     }
 

@@ -3,6 +3,7 @@ package com.example.pelmorexassessment.ui.weather
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.example.pelmorexassessment.DateUtil
 import com.example.pelmorexassessment.base.BaseViewModel
 import com.example.pelmorexassessment.repo.WeatherRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -24,11 +25,10 @@ class WeatherViewModel @Inject constructor(private val weatherRepo: WeatherRepo)
         viewModelScope.launch(Dispatchers.IO) {
             when (val result = weatherRepo.getWeatherC(cityCode)) {
                 is Result.Success -> {
-                    Log.e("DicksonDebug", "DicksonDebug check point!")
                     val cityName = mapPaymentType(result.data.placecode).cityName
                     val item = WeatherDisplayModel(
                         cityName = cityName,
-                        updateTime = result.data.updatetime,
+                        updateTime = DateUtil.getDateTime(result.data.updatetimeStampGmt)?:result.data.updatetime,
                         condition = result.data.wxcondition,
                         temperature = result.data.temperature,
                         feelLike = result.data.feelsLike,
@@ -47,7 +47,6 @@ class WeatherViewModel @Inject constructor(private val weatherRepo: WeatherRepo)
         viewModelScope.launch(Dispatchers.IO) {
             when (val result = weatherRepo.getWeatherF(cityCode)) {
                 is Result.Success -> {
-                    Log.e("DicksonDebug", "DicksonDebug check point!")
                     val cityName = mapPaymentType(result.data.placecode).cityName
                     val item = WeatherDisplayModel(
                         cityName = cityName,

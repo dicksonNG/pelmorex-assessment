@@ -55,4 +55,12 @@ class MainActivity : AppCompatActivity() {
     fun hideBottomNav() {
         binding.bottomNavigation.visibility = View.GONE
     }
+
+    fun showLoadingDialog(isShow: Boolean) {
+        if (isShow) {
+            binding.showLoading.visibility = View.VISIBLE
+        } else {
+            binding.showLoading.visibility = View.GONE
+        }
+    }
 }

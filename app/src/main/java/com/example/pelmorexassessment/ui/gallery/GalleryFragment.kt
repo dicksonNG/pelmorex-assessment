@@ -33,6 +33,7 @@ class GalleryFragment : BaseFragment() {
                 })
         }
     })
+    override fun provideBaseViewModel()=viewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,

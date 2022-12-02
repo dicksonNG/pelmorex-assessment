@@ -22,6 +22,7 @@ open class ContactUsFragment : BaseFragment() {
     private val binding get() = _binding!!
 
     val contactUsViewModel by viewModels<ContactUsViewModel>()
+    override fun provideBaseViewModel()=contactUsViewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.

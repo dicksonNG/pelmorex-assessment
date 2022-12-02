@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.example.pelmorexassessment.DateUtil
 import com.example.pelmorexassessment.base.BaseViewModel
+import com.example.pelmorexassessment.base.Error
 import com.example.pelmorexassessment.repo.WeatherRepo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -23,6 +24,7 @@ class WeatherViewModel @Inject constructor(private val weatherRepo: WeatherRepo)
 
     fun getWeatherC(cityCode: String) {
         viewModelScope.launch(Dispatchers.IO) {
+            showLoading.postValue(true)
             when (val result = weatherRepo.getWeatherC(cityCode)) {
                 is Result.Success -> {
                     val cityName = mapPaymentType(result.data.placecode).cityName
@@ -38,13 +40,16 @@ class WeatherViewModel @Inject constructor(private val weatherRepo: WeatherRepo)
                     _weatherData.postValue(item)
                 }
                 is Result.Failure -> {
+                    errorDialogAction.postValue(Error(400, title = "No Result", message = "Cannot get data from server!", status = ""))
                 }
             }
+            showLoading.postValue(false)
         }
     }
 
     fun getWeatherF(cityCode: String) {
         viewModelScope.launch(Dispatchers.IO) {
+            showLoading.postValue(true)
             when (val result = weatherRepo.getWeatherF(cityCode)) {
                 is Result.Success -> {
                     val cityName = mapPaymentType(result.data.placecode).cityName
@@ -60,8 +65,10 @@ class WeatherViewModel @Inject constructor(private val weatherRepo: WeatherRepo)
                     _weatherData.postValue(item)
                 }
                 is Result.Failure -> {
+                    errorDialogAction.postValue(Error(400, title = "No Result", message = "Cannot get data from server!", status = ""))
                 }
             }
+            showLoading.postValue(false)
         }
     }
 

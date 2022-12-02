@@ -5,12 +5,13 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.pelmorexassessment.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import java.util.regex.Pattern
 import javax.inject.Inject
 
 @HiltViewModel
-class ContactUsViewModel @Inject constructor() : ViewModel() {
+class ContactUsViewModel @Inject constructor() : BaseViewModel() {
 
     val emailRegex = ".+@.+\\.+[a-zA-Z]{2,}\$+"
     val phoneRegex = "^[0-9]{10}\$"

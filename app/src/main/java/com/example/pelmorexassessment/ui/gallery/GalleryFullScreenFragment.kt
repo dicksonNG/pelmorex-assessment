@@ -24,6 +24,7 @@ class GalleryFullScreenFragment : BaseFragment() {
 
         }
     })
+    override fun provideBaseViewModel()=viewModel
 
     // This property is only valid between onCreateView and
     // onDestroyView.

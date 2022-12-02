@@ -44,7 +44,6 @@ class GeneralDialog private constructor() : DialogFragment() {
     private var onEnter: ((GeneralDialog) -> Unit)? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // setStyle(STYLE_NORMAL,R.style.dialog)
     }
 
     override fun onResume() {
@@ -82,13 +81,5 @@ class GeneralDialog private constructor() : DialogFragment() {
                 binding.ivSuccessIcon.visibility = View.GONE
             }
         }
-    }
-
-    override fun onStart() {
-        super.onStart()
-    }
-
-    fun Int.dp(): Int {
-        return (this * Resources.getSystem().displayMetrics.density).toInt()
     }
 }

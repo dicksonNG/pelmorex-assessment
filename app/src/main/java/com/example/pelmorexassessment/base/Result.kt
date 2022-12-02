@@ -40,13 +40,11 @@ data class Error(
     val statusCode: Int,
     override val message: String,
     val status: String,
-    var title:String?=null
+    var title: String? = null
 ) : Throwable() {
     companion object {
         const val ERROR_CODE_NETWORK_ERROR = "NETWORK_ERROR"
-        const val ERROR_CUSTOMER_ERROR = "ERROR_CUSTOMER_ERROR"
         const val ERROR_TIMEOUT_ERROR = "ERROR_TIMEOUT_ERROR"
-        const val ERROR_CART_UPDATED = "M-CART-UPDATED"
 
         val NetworkError = Error(0, ERROR_CODE_NETWORK_ERROR, "")
         val TimeoutError = Error(-100, ERROR_TIMEOUT_ERROR, "")
@@ -61,7 +59,7 @@ data class Error(
                 builder.registerTypeAdapter(type, ErrorInfoJsonDeserializer())
                 val gson = builder.create()
                 val errorInfo = gson.fromJson(body.string(), ErrorInfo::class.java)
-                Error(errorInfo.code ?: -1, errorInfo.message ?: "", errorInfo.status?:"")
+                Error(errorInfo.code ?: -1, errorInfo.message ?: "", errorInfo.status ?: "")
             } catch (e: Exception) {
                 Error(400, "", "")
             }
@@ -72,10 +70,8 @@ data class Error(
     data class ErrorInfo(
         val code: Int,
         val message: String?,
-        // 7.16 out of stock will return object...
         val status: String?,
-
-        )
+    )
 
     class ErrorInfoJsonDeserializer : JsonDeserializer<ErrorInfo> {
         override fun deserialize(
@@ -86,9 +82,8 @@ data class Error(
             if (json.isJsonObject) {
                 val obj = json.asJsonObject
                 val statusCode = obj.get("code")?.asInt ?: 400
-                var errorMessage: String? = null
-                errorMessage = obj.get("message")?.asString ?: ""
-                val status = obj.get("status")?.asString?:""
+                var errorMessage = obj.get("message")?.asString ?: ""
+                val status = obj.get("status")?.asString ?: ""
                 return ErrorInfo(
                     statusCode,
                     errorMessage,

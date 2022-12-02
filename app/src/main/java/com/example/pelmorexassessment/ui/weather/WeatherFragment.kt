@@ -9,7 +9,6 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import com.example.pelmorexassessment.BaseFragment
 import com.example.pelmorexassessment.R
-import com.example.pelmorexassessment.base.BaseViewModel
 import com.example.pelmorexassessment.databinding.FragmentWeatherBinding
 import dagger.hilt.android.AndroidEntryPoint
 

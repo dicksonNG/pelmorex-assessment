@@ -146,8 +146,6 @@ class TitleEditTextView : FrameLayout {
                 inputText.requestFocus()
             }
         }, 180) // Programming delay to avoid Android request focus / request layout crash
-        // Suspected that previous GeneralFloatLabelEditText lose focus -> request layout
-        // will crash with inputText.requestFocus() and make it lose focus immediately after gaining
     }
 
     enum class CustomInputType(val type: Int) {

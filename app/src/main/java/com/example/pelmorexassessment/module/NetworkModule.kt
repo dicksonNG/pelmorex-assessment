@@ -28,10 +28,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideRetrofit(
-//        @Named("VersionName") versionName: String,
-        context: Context,
-    ): Retrofit {
+    fun provideRetrofit(): Retrofit {
         val httpClient = httpClient()
         return Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -75,34 +72,6 @@ object NetworkModule {
                 Log.e("Retrofit", "error $api")
             }
 
-
-            return response
-        }
-    }
-
-
-    class ErrorInterceptorInTest : Interceptor {
-        override fun intercept(chain: Interceptor.Chain): Response {
-            val request: Request = chain.request()
-            val response = chain.proceed(request)
-            val statusCode = response.code
-            val api = chain.request().url.toString()
-
-            if (request.method == "PUT" && statusCode == 200) {
-                resultCode = 200
-            }
-
-            if (statusCode != 200) {
-//                APILogger.errorLog(api, response.code(), null)
-                Log.e("Retrofit", "error $api")
-            } else {
-                Log.d(
-                    "Retrofit",
-                    "statusCode - $statusCode, request - $request, response - $response"
-                )
-            }
-
-
             return response
         }
     }
@@ -116,31 +85,6 @@ object NetworkModule {
             return response.newBuilder()
                 .header("Cache-Control", cacheControl.toString())
                 .build()
-        }
-    }
-
-    /**
-     * @class NullOnEmptyConverterFactory
-     * https://stackoverflow.com/questions/35744795/retrofit2-error-java-io-eofexception-end-of-input-at-line-1-column-1
-     * Fatal Exception: java.io.EOFException
-     * End of input at line 1 column 1 path $
-     *
-     * retrofit2.converter.gson.GsonResponseBodyConverter.convert (GsonResponseBodyConverter.java:40)
-     *
-     */
-    class NullOnEmptyConverterFactory : Converter.Factory() {
-        override fun responseBodyConverter(
-            type: Type,
-            annotations: Array<Annotation>,
-            retrofit: Retrofit
-        ): Converter<ResponseBody, *> {
-            val delegate: Converter<ResponseBody, *> =
-                retrofit.nextResponseBodyConverter<Any>(this, type, annotations)
-            return Converter { body ->
-                if (body.contentLength() == 0L) null else delegate.convert(
-                    body
-                )
-            }
         }
     }
 }

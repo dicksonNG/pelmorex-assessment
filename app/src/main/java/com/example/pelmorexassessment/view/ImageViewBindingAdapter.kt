@@ -14,28 +14,6 @@ import coil.request.ImageRequest
 import coil.transform.CircleCropTransformation
 import java.util.Base64
 
-@BindingAdapter(value = ["backgroundRes"])
-fun backgroundResources(view: View, resId: Int?) {
-    if (resId != null && resId > 0) {
-        view.setBackgroundResource(resId)
-    } else {
-        view.background = null
-    }
-}
-
-@BindingAdapter(value = ["backgroundColorString"])
-fun backgroundColorString(view: View, colorString: String?) {
-    if (colorString != null) {
-        try {
-            view.setBackgroundColor(Color.parseColor(colorString))
-        } catch (e: Exception) {
-            view.background = null
-        }
-    } else {
-        view.background = null
-    }
-}
-
 @BindingAdapter("imageBase64")
 fun deCodeBase64(view: ImageView, url: String?) {
     if (url.isNullOrEmpty()) {
@@ -53,45 +31,5 @@ fun setImageDrawable(view: ImageView, drawableResId: Int?) {
     if (drawableResId == 0 || drawableResId == null) return
     view.load(drawableResId) {
         crossfade(true)
-    }
-//    view.setImageDrawable(ContextCompat.getDrawable(view.context, drawableResId))
-}
-
-
-@BindingAdapter("imageUrl")
-fun setImageUrl(view: ImageView, url: String?) {
-    if (url.isNullOrEmpty()) return
-
-    view.load(url) {
-
-    }
-}
-
-@BindingAdapter("imageUrlCircle")
-fun setImageUrlCircle(view: ImageView, url: String?) {
-    if (url.isNullOrEmpty()) return
-
-    view.load(url) {
-        transformations(CircleCropTransformation())
-    }
-}
-
-@BindingAdapter("imageUrlRes", "imagePlaceHolderRes", "imageErrorRes", requireAll = false)
-fun setImageUrlWithRes(
-    view: ImageView,
-    url: String?,
-    imagePlaceHolderRes: Drawable?,
-    imageErrorRes: Drawable?
-) {
-    if (url.isNullOrEmpty() && imageErrorRes == null) return
-
-    view.load(url) {
-        placeholder(imagePlaceHolderRes)
-        error(imageErrorRes)
-        listener(object : ImageRequest.Listener {
-            override fun onError(request: ImageRequest, result: ErrorResult) {
-                super.onError(request, result)
-            }
-        })
     }
 }

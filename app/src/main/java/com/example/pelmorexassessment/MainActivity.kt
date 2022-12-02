@@ -20,17 +20,6 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        val navView: BottomNavigationView = binding.bottomNavigation
-
-        val navController = findNavController(R.id.vBaseNavigationHost)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
-        val appBarConfiguration = AppBarConfiguration(
-            setOf(
-                R.id.navigation_weather, R.id.navigation_gallery, R.id.navigation_contactus
-            )
-        )
     }
 
     override fun onStart() {

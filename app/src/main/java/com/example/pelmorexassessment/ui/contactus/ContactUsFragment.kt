@@ -41,14 +41,7 @@ open class ContactUsFragment : BaseFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
-        //  initObserver()
     }
-
-//
-//    fun initObserver(){
-//
-//    }
-
     fun initListener() {
         binding.tvSend.setOnClickListener {
             showDialog(

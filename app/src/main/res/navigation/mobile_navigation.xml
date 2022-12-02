@@ -9,7 +9,7 @@
         android:id="@+id/navigation_weather"
         android:name="com.example.pelmorexassessment.ui.weather.WeatherFragment"
         android:label="@string/title_weather"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_weather" />
 
     <fragment
         android:id="@+id/navigation_gallery"

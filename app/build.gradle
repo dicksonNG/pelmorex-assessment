@@ -20,6 +20,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "com.example.pelmorexassessment.CustomTestRunner"
     }
 
     buildTypes {
@@ -117,4 +118,7 @@ dependencies {
     testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
     testImplementation 'androidx.arch.core:core-testing:2.1.0'
     testImplementation 'org.robolectric:robolectric:4.8'
+    testImplementation "androidx.test.ext:junit:1.1.1"
+    debugImplementation "androidx.fragment:fragment-testing:1.5.4"
+
 }

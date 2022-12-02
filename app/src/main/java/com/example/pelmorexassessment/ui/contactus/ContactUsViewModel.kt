@@ -48,6 +48,11 @@ class ContactUsViewModel @Inject constructor() : ViewModel() {
         _phone.postValue(phone)
     }
 
+    fun resetValue(){
+        _name.postValue(null)
+        _email
+    }
+
     private fun isValid(input: String, regex: String): Boolean {
         return Pattern.compile(regex).matcher(input).matches()
     }

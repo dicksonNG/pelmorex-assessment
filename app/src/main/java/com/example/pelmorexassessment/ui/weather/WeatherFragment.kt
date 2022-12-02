@@ -9,13 +9,13 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.viewModels
 import com.example.pelmorexassessment.BaseFragment
 import com.example.pelmorexassessment.R
-import com.example.pelmorexassessment.databinding.FragmentHomeBinding
+import com.example.pelmorexassessment.databinding.FragmentWeatherBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class WeatherFragment : BaseFragment() {
 
-    private var _binding: FragmentHomeBinding? = null
+    private var _binding: FragmentWeatherBinding? = null
     val weatherViewModel by viewModels<WeatherViewModel>()
 
     // This property is only valid between onCreateView and
@@ -27,7 +27,7 @@ class WeatherFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentWeatherBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
         return root

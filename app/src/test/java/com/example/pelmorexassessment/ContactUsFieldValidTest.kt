@@ -3,12 +3,13 @@ package com.example.pelmorexassessment
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.pelmorexassessment.ui.contactus.ContactUsViewModel
 import com.example.pelmorexassessment.utils.MainCoroutineScopeRule
-import dagger.hilt.android.testing.HiltAndroidTest
+import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
+
 
 @RunWith(JUnit4::class)
 class ContactUsFieldValidTest {
@@ -17,9 +18,10 @@ class ContactUsFieldValidTest {
 
     @get:Rule
     val coroutineScope = MainCoroutineScopeRule()
+    val contactUsViewModel = ContactUsViewModel()
+
     @Test
     fun contactus_all_field_correct() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("6045059899")
         contactUsViewModel.setName("Tsz Ho")
         contactUsViewModel.setEmail("tszhng0605@gmail.com")
@@ -28,7 +30,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_phone_with_characters__incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("60450598er")
         contactUsViewModel.setName("Tsz Ho")
         contactUsViewModel.setEmail("tszhng0605@gmail.com")
@@ -37,7 +38,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_phone_with_less10_number_incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("60450598")
         contactUsViewModel.setName("Tsz Ho")
         contactUsViewModel.setEmail("tszhng0605@gmail.com")
@@ -46,7 +46,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_phone_with_empty_incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("")
         contactUsViewModel.setName("Tsz Ho")
         contactUsViewModel.setEmail("tszhng0605@gmail.com")
@@ -55,7 +54,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_email_format2_correct() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("6045059899")
         contactUsViewModel.setName("Tsz Ho")
         contactUsViewModel.setEmail("tszhng0605@gmail.ca")
@@ -64,7 +62,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_email_with_empty_incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("6045059899")
         contactUsViewModel.setName("Tsz Ho")
         contactUsViewModel.setEmail("")
@@ -73,7 +70,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_email_with_not_email_format1_incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("6045059899")
         contactUsViewModel.setName("Tsz Ho")
         contactUsViewModel.setEmail("iairj2394jasd")
@@ -82,7 +78,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_email_with_not_email_format2_incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("6045059899")
         contactUsViewModel.setName("Tsz Ho")
         contactUsViewModel.setEmail("iairj@erqr")
@@ -91,7 +86,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_email_with_not_email_format3_incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("6045059899")
         contactUsViewModel.setName("Tsz Ho")
         contactUsViewModel.setEmail("iairj@erqr,isad")
@@ -109,7 +103,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_name_with_number_incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("6045059899")
         contactUsViewModel.setName("Tszh31413")
         contactUsViewModel.setEmail("tszhng0605@gmail.com")
@@ -118,7 +111,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_name_with_less4_incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("6045059899")
         contactUsViewModel.setName("Tsz")
         contactUsViewModel.setEmail("tszhng0605@gmail.com")
@@ -127,7 +119,6 @@ class ContactUsFieldValidTest {
 
     @Test
     fun contactus_name_with_empty_incorrect() {
-        val contactUsViewModel = ContactUsViewModel()
         contactUsViewModel.setPhoneNumber("6045059899")
         contactUsViewModel.setName("")
         contactUsViewModel.setEmail("tszhng0605@gmail.com")

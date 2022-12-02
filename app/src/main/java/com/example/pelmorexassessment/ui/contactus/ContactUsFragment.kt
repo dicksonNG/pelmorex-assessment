@@ -50,7 +50,7 @@ open class ContactUsFragment : BaseFragment() {
 //    }
 
     fun initListener() {
-        binding.tvSave.setOnClickListener {
+        binding.tvSend.setOnClickListener {
             showDialog(
                 requireContext().getString(R.string.title_contact_us),
                 requireContext().getString(R.string.contact_us_submit_success)

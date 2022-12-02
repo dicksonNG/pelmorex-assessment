@@ -37,10 +37,10 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatTextView
-                android:id="@+id/tvSave"
+                android:id="@+id/tvSend"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/general_save"
+                android:text="@string/general_send"
                 android:textColor="@{viewModel.isAllFieldValid()? @color/black : @color/gray_d8d8d8}"
                 android:clickable="@{viewModel.isAllFieldValid()}"
                 android:textSize="20sp"

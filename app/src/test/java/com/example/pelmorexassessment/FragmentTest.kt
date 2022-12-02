@@ -9,12 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import com.example.pelmorexassessment.test.launchFragmentInHiltContainer
 import com.example.pelmorexassessment.ui.contactus.ContactUsFragment
-import com.example.pelmorexassessment.ui.contactus.ContactUsViewModel
 import com.example.pelmorexassessment.ui.gallery.GalleryFragment
 import com.example.pelmorexassessment.ui.gallery.GalleryFullScreenFragment
 import com.example.pelmorexassessment.ui.gallery.GalleryListAdapter
 import com.example.pelmorexassessment.ui.weather.WeatherFragment
-import com.example.pelmorexassessment.ui.weather.WeatherViewModel
 import com.example.pelmorexassessment.utils.MainCoroutineScopeRule
 import com.google.android.material.switchmaterial.SwitchMaterial
 import dagger.hilt.android.testing.HiltAndroidTest
@@ -38,7 +36,7 @@ class FragmentTest {
     @Throws(Exception::class)
     fun contactUsFragmentShouldNotBeNull() {
         launchFragmentInHiltContainer<ContactUsFragment> {
-            assert(this.view?.findViewById<TextView>(R.id.tvSave)?.text.toString() == "Save")
+            assert(this.view?.findViewById<TextView>(R.id.tvSend)?.text.toString() == "Send")
             assert(this.view?.findViewById<TextView>(R.id.tvTitle)?.text.toString() == "Contact Us")
             assert(
                 this.view?.findViewById<com.example.pelmorexassessment.view.TitleEditTextView>(R.id.tvPhoneNumber)
